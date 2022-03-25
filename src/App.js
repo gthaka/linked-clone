@@ -8,7 +8,7 @@ import Dashboard from "./components/pages/Dashboard";
 import Navbar from "./components/Navbar";
 import { BrowserRouter as BRouter, Routes, Route } from "react-router-dom";
 import Team from "./components/pages/Team";
-import MainBody from "./components/MainBody";
+import GithubUsers from "./components/pages/GithubUsers";
 function App() {
   return (
     <>
@@ -16,14 +16,19 @@ function App() {
         <BRouter>
           <React.Fragment>
             <Navbar />
-            <MainBody>
-              <Routes>
-                <Route path="/" element={<Dashboard />} />
-                <Route path="team" element={<Team />} />
-                <Route path="/" element={<Dashboard />} />
-                <Route path="/" element={<Dashboard />} />
-              </Routes>
-            </MainBody>
+            <main>
+              <div className="max-w-7xl mx-auto pb-6 sm:px-6 lg:px-8">
+                <div className="px-4 py-6 sm:px-0">
+                  <div className="border-4 border-dashed border-gray-200 rounded-lg h-auto pb-7">
+                    <Routes>
+                      <Route path="/" element={<Dashboard />} />
+                      <Route path="team" element={<Team />} />
+                      <Route path="/github-users" element={<GithubUsers />} />
+                    </Routes>
+                  </div>
+                </div>
+              </div>
+            </main>
           </React.Fragment>
         </BRouter>
       </div>
