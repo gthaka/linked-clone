@@ -1,6 +1,7 @@
 import React from "react";
 import Titlebar from "../Titlebar";
 import DadConfig from "../../config/dadjokes.json";
+import { UserIcon } from "@heroicons/react/outline";
 
 export default function DadJokes() {
   const jokesURL = "https://dad-jokes.p.rapidapi.com/random/joke";
@@ -13,23 +14,6 @@ export default function DadJokes() {
   const [joke, setJoke] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(false);
 
-  // const jokedata = {
-  //   success: true,
-  //   body: [
-  //     {
-  //       _id: "60dd360c2e6a3cb9974f30b4",
-  //       setup: "A Greek goes to his tailor with ripped pants",
-  //       punchline: "The tailor: Euripides?The customer: Eumenides?",
-  //       type: "customer",
-  //       likes: [],
-  //       author: { name: "unknown", id: null },
-  //       approved: true,
-  //       date: 1618108661,
-  //       NSFW: false,
-  //     },
-  //   ],
-  // };
-
   const getJoke = async () => {
     setIsLoading(true);
     const res = await fetch(jokesURL, options);
@@ -39,28 +23,15 @@ export default function DadJokes() {
     setJoke(await res.json());
     setIsLoading(false);
   };
-  // const getJoke = async () => {
-  //   setIsLoading(true);
-  //   const res = await jokedata;
-  //   // if (!res.ok) {
-  //   //   throw new Error(`Could contact server! -> ${res.statusText}`);
-  //   // }
-  //   // console.log(jokedata)
-  //   setInterval(() => {
-  //     setIsLoading(false);
-  //     return setJoke(res);
-  //   }, 2000);
-  // };
 
   React.useEffect(() => {
     setJoke();
   }, []);
 
-  // const fetchJoke = getJoke();
-
   const jokeButton = (
     <button
-      onClick={getJoke} disabled={isLoading}
+      onClick={getJoke}
+      disabled={isLoading}
       className="inline-flex items-center justify-center px-4 py-1 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 float-right"
     >
       Get Random Joke
@@ -85,24 +56,31 @@ function JokePlate({ joke }) {
   );
 
   if (joke && joke.success) {
-    const { _id, setup, punchline,author,type } = joke.body[0];
+    const { _id, setup, punchline, author, type } = joke.body[0];
     // console.log(joke.body[0]);
     result = (
-      <div
-        key={_id}
-        className="border border-blue-300 shadow rounded-md p-4 w-full mx-auto"
-      >
-        <div className="flex space-x-5">
-          <div className="rounded-full bg-indigo-400 h-20 w-20"></div>
-          <div className="flex-1 space-y-4 py-1">
-            <div className="h-4 text-blue-400 text-bold rounded w-40">Joke Type: <span className="capitalize">{type}</span></div>
-            <div className="space-y-2">
-              <div className="text-2xl h-6 w-3/4 text-blue-900">{setup}</div>
-              <div className="animate-tadaa text-2xl h-[32px] text-indigo-600 overflow-hidden whitespace-nowrap	m-0">{punchline}</div>
-            </div>
-          </div>
+      <div className="mt-10">
+        <div className="lg:text-center">
+          <h2 className="text-base text-indigo-600 font-semibold tracking-wide uppercase">
+            {type}
+          </h2>
         </div>
-        <div className="italic text-center space-x-4 w-20">{author.name}</div>
+        <dl className="space-y-12 md:space-y-0 md:grid md:grid-cols-1">
+          <div key={_id} className="relative">
+            <dt>
+              <div className="absolute flex items-center justify-center h-24 w-24 rounded-md bg-indigo-500 text-white">
+                <UserIcon className="h-24 w-24" aria-hidden="true" />
+              </div>
+            </dt>
+            <dd className="mt-2 ml-28 font-semibold tracking-wide ">{setup}</dd>
+            <dd className="mt-2 ml-28 text-indigo-600 font-semibold tracking-wide animate-[bounce_5s_ease-in-out_2] pr-32">
+              {punchline}
+            </dd>
+            <dd className="mt-2 text-1xl font-semibold tracking-wide uppercase">
+              {author.name}
+            </dd>
+          </div>
+        </dl>
       </div>
     );
   }
@@ -112,19 +90,38 @@ function JokePlate({ joke }) {
 function LoadingAnimation() {
   return (
     <>
-      <div className="border border-blue-300 shadow rounded-md p-5 w-full mx-auto">
-        <div className="flex space-x-5">
-          <div className="rounded-full bg-indigo-400 h-20 w-20"></div>
-          <div className="flex-1 space-y-4 py-1">
-            <div className="h-6 text-blue-400 rounded w-40 bg-indigo-400"></div>
-            <div className="space-y-2">
-              <div className="h-6 w-3/4 bg-indigo-400"></div>
-              <div className="h-6 bg-indigo-400"></div>
+    <div className="animate-pulse py-12 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="shadow rounded-md p-5 w-full mx-auto">
+          <div className="place-content-center">
+            <div className="w-[30%] my-0 mx-auto bg-indigo-400">
+              &nbsp;
             </div>
           </div>
+          <dl className="space-y-12 md:space-y-0 md:grid md:grid-cols-1">
+            <div className="relative">
+              <dt>
+                <div className="absolute flex items-center justify-center h-24 w-24 rounded-md bg-indigo-400">
+                  &nbsp;
+                </div>
+              </dt>
+              <dd className="mt-2 ml-28 bg-indigo-400 w-3/4 rounded">
+                &nbsp;
+              </dd>
+              <dd className="mt-2 ml-28 bg-indigo-400 w-4/5 rounded">
+                &nbsp;
+              </dd>
+              <dd className="mt-2 ml-28 tracking-wide bg-indigo-400 w-4/5 rounded">
+                &nbsp;
+              </dd>
+              <dd className="mt-4 bg-indigo-400 w-[100px] rounded">
+                &nbsp;
+              </dd>
+            </div>
+          </dl>
         </div>
-        <div className="space-x-4 w-20 h-6 bg-indigo-400 rounded-md"></div>
       </div>
+    </div>
     </>
   );
 }
