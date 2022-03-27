@@ -48,6 +48,7 @@ export default function GithubUsers() {
     // getMe();
   // }
   let all = [me,...users];
+  console.log(all);
   const list = all/*.slice(0, 1)*/.map((user) => {
     const { id, login, avatar_url, html_url } = user;
     

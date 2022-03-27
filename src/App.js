@@ -9,6 +9,7 @@ import Navbar from "./components/Navbar";
 import { BrowserRouter as BRouter, Routes, Route } from "react-router-dom";
 import Team from "./components/pages/Team";
 import GithubUsers from "./components/pages/GithubUsers";
+import DadJokes from "./components/pages/DadJokes";
 function App() {
   return (
     <>
@@ -24,6 +25,7 @@ function App() {
                       <Route path="/" element={<Dashboard />} />
                       <Route path="team" element={<Team />} />
                       <Route path="/github-users" element={<GithubUsers />} />
+                      <Route path="/dad-jokes" element={<DadJokes />} />
                     </Routes>
                   </div>
                 </div>
