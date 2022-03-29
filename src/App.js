@@ -14,25 +14,23 @@ function App() {
   return (
     <>
       <div className="min-h-full">
-        <BRouter>
-          <React.Fragment>
-            <Navbar />
-            <main>
-              <div className="max-w-7xl mx-auto pb-6 sm:px-6 lg:px-8">
-                <div className="px-4 py-6 sm:px-0">
-                  <div className="border-4 border-dashed border-gray-200 rounded-lg h-auto pb-7">
-                    <Routes>
-                      <Route path="/" element={<Dashboard />} />
-                      <Route path="team" element={<Team />} />
-                      <Route path="/github-users" element={<GithubUsers />} />
-                      <Route path="/dad-jokes" element={<DadJokes />} />
-                    </Routes>
-                  </div>
+        <React.Fragment>
+          <Navbar />
+          <main>
+            <div className="max-w-7xl mx-auto pb-6 sm:px-6 lg:px-8">
+              <div className="px-4 py-6 sm:px-0">
+                <div className="border-4 border-dashed border-gray-200 rounded-lg h-auto pb-7">
+                  <Routes>
+                    <Route path="/" element={<Dashboard />} />
+                    <Route path="team" element={<Team />} />
+                    <Route path="/github-users" element={<GithubUsers />} />
+                    <Route path="/dad-jokes" element={<DadJokes />} />
+                  </Routes>
                 </div>
               </div>
-            </main>
-          </React.Fragment>
-        </BRouter>
+            </div>
+          </main>
+        </React.Fragment>
       </div>
     </>
   );
