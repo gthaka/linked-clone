@@ -6,10 +6,11 @@ import "./App.css";
 import React, { Fragment } from "react";
 import Dashboard from "./components/pages/Dashboard";
 import Navbar from "./components/Navbar";
-import { BrowserRouter as BRouter, Routes, Route } from "react-router-dom";
-import Team from "./components/pages/Team";
+import { Routes, Route } from "react-router-dom";
+import Team from "./components/pages/Movies";
 import GithubUsers from "./components/pages/GithubUsers";
 import DadJokes from "./components/pages/DadJokes";
+import Movies from "./components/pages/Movies";
 function App() {
   return (
     <>
@@ -25,6 +26,7 @@ function App() {
                     <Route path="team" element={<Team />} />
                     <Route path="/github-users" element={<GithubUsers />} />
                     <Route path="/dad-jokes" element={<DadJokes />} />
+                    <Route path="/movies" element={<Movies />} />
                   </Routes>
                 </div>
               </div>

@@ -11,7 +11,7 @@ const user = {
   };
   const navigation = [
     { name: "Dashboard", href: "/"},
-    { name: "Team", href: "team"},
+    { name: "Movies", href: "movies"},
     { name: "Dad Jokes", href: "dad-jokes"},
     { name: "Github Users", href: "github-users"},
   ];
