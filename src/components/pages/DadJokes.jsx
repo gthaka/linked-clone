@@ -90,38 +90,38 @@ function JokePlate({ joke }) {
 function LoadingAnimation() {
   return (
     <>
-    <div className="animate-pulse py-12 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="shadow rounded-md p-5 w-full mx-auto">
-          <div className="place-content-center">
-            <div className="w-[30%] my-0 mx-auto bg-indigo-400">
-              &nbsp;
+      <div className="animate-pulse py-12 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="shadow rounded-md p-5 w-full mx-auto">
+            <div className="place-content-center">
+              <div className="w-[30%] my-0 mx-auto bg-indigo-400">
+                &nbsp;
+              </div>
             </div>
-          </div>
-          <dl className="space-y-12 md:space-y-0 md:grid md:grid-cols-1">
-            <div className="relative">
-              <dt>
-                <div className="absolute flex items-center justify-center h-24 w-24 rounded-md bg-indigo-400">
+            <dl className="space-y-12 md:space-y-0 md:grid md:grid-cols-1">
+              <div className="relative">
+                <dt>
+                  <div className="absolute flex items-center justify-center h-24 w-24 rounded-md bg-indigo-400">
+                    &nbsp;
+                  </div>
+                </dt>
+                <dd className="mt-2 ml-28 bg-indigo-400 w-3/4 rounded">
                   &nbsp;
-                </div>
-              </dt>
-              <dd className="mt-2 ml-28 bg-indigo-400 w-3/4 rounded">
-                &nbsp;
-              </dd>
-              <dd className="mt-2 ml-28 bg-indigo-400 w-4/5 rounded">
-                &nbsp;
-              </dd>
-              <dd className="mt-2 ml-28 tracking-wide bg-indigo-400 w-4/5 rounded">
-                &nbsp;
-              </dd>
-              <dd className="mt-4 bg-indigo-400 w-[100px] rounded">
-                &nbsp;
-              </dd>
-            </div>
-          </dl>
+                </dd>
+                <dd className="mt-2 ml-28 bg-indigo-400 w-4/5 rounded">
+                  &nbsp;
+                </dd>
+                <dd className="mt-2 ml-28 tracking-wide bg-indigo-400 w-4/5 rounded">
+                  &nbsp;
+                </dd>
+                <dd className="mt-4 bg-indigo-400 w-[100px] rounded">
+                  &nbsp;
+                </dd>
+              </div>
+            </dl>
+          </div>
         </div>
       </div>
-    </div>
     </>
   );
 }
