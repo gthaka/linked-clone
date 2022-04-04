@@ -1,10 +1,8 @@
-import React, { Fragment } from 'react';
+import React, { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { BellIcon, MenuIcon, XIcon, CodeIcon } from "@heroicons/react/outline";
 import { NavLink } from "react-router-dom";
-import { main as navigation } from '../config/navigation';
-
-console.log(navigation);
+import { main as navigation } from "../config/navigation";
 
 const user = {
   name: "Anthony G",
@@ -23,9 +21,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-
 export default function Navbar() {
-
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
@@ -34,8 +30,11 @@ export default function Navbar() {
             <div className="flex items-center justify-between h-16">
               <div className="flex items-center">
                 <div className="flex-shrink-0">
-                  <CodeIcon as='img'
-                    fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                  <CodeIcon
+                    as="img"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
                     className="h-8 w-8 text-indigo-500"
                     alt="Workflow"
                   />
@@ -46,11 +45,16 @@ export default function Navbar() {
                       <NavLink
                         key={item.name}
                         to={item.href}
-                        className={
-                          ({ isActive }) => { return `${navLinked} ${isActive ? "bg-gray-900 text-white" : "text-gray-300 hover:bg-gray-700 hover:text-white"}` }
-
-                        }
-                        aria-current={({ isActive }) => { return { isActive } ? "page" : undefined }}
+                        className={({ isActive }) => {
+                          return `${navLinked} ${
+                            isActive
+                              ? "bg-gray-900 text-white"
+                              : "text-gray-300 hover:bg-gray-700 hover:text-white"
+                          }`;
+                        }}
+                        aria-current={({ isActive }) => {
+                          return { isActive } ? "page" : undefined;
+                        }}
                       >
                         {item.name}
                       </NavLink>
@@ -117,10 +121,7 @@ export default function Navbar() {
                   {open ? (
                     <XIcon className="block h-6 w-6" aria-hidden="true" />
                   ) : (
-                    <MenuIcon
-                      className="block h-6 w-6"
-                      aria-hidden="true"
-                    />
+                    <MenuIcon className="block h-6 w-6" aria-hidden="true" />
                   )}
                 </Disclosure.Button>
               </div>
@@ -188,5 +189,5 @@ export default function Navbar() {
         </>
       )}
     </Disclosure>
-  )
+  );
 }
