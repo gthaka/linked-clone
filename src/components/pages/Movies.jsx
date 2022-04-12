@@ -30,7 +30,8 @@ export default function Movies() {
   };
 
   const [genres, setGenres] = useState([]);
-  const [page, setPage] = useState(8);
+  const [page, setPage] = useState(1);
+  const [gId, setGId] = useState(0);
   const [movies, setMovies] = useState({});
   const [selected, setSelected] = useState({
     id: "-1",
@@ -49,6 +50,20 @@ export default function Movies() {
     setGenres(data.genres);
   };
 
+  const getGId = async (id) => {
+    console.log(id);
+    setGId(id);
+  };
+  
+  useEffect(() => {
+    console.log('getGenres')
+    getGenres();
+  }, []);
+  
+  useEffect(() => {
+    getGId();
+  }, [genres]);
+
   // const getSelected = async () => {
   //   await getGenres();
   //   setSelected();
@@ -56,6 +71,7 @@ export default function Movies() {
 
   const getMovies = async (id) => {
     setIsLoading(true);
+    console.log(`Page No ${page}`)
     // console.log({ ...options, with_genres: id, page: 1 });
     const res = await fetch(
       `${movieURL}?with_genres=${id}&page=${page}`,
@@ -69,18 +85,16 @@ export default function Movies() {
     setMovies(data);
   };
 
-  const handleSelected = (data) => {
+  const handleSelected = data => {
     setSelected(data);
-    getMovies(data.id);
+    getGId(data.id);
+    getMovies(gId);
   };
 
-  useEffect(() => {
-    getGenres();
-  }, []);
 
   // useEffect(() => {
-  //   getSelected();
-  // }, []);
+  //   handleSelected();
+  // }, [page]);
 
   return (
     <>
@@ -181,9 +195,9 @@ export default function Movies() {
             </div>
           </>
         )}
-      </Listbox>
+      </Listbox>S
       {movies.results && <MovieRoll movies={movies.results} />}
-      {movies.results && <Pagination moviesInfo={movies} />}
+      {movies.results && <Pagination moviesInfo={movies} setPage={setPage} page={page}/>}
     </>
   );
 }
@@ -194,7 +208,7 @@ function MovieRoll({ movies }) {
       {movies &&
         movies.map((movie) => (
           <div key={movie.id} className="group relative">
-            <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none">
+            <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-auto lg:aspect-none">
               <img
                 src={movie.poster_path}
                 alt={movie.original_title}
@@ -223,20 +237,24 @@ function MovieRoll({ movies }) {
   );
 }
 
-function Pagination({ moviesInfo }) {
-  const [currentPage, setCurrentPage] = useState(1);
+function Pagination({ moviesInfo, setPage, page }) {
+  // const [currentPage, setCurrentPage] = useState(1);
+
+  // useEffect(()=>{
+  //   setPage(currentPage)
+  // },[currentPage])
 
   return (
     <div className="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
       <div className="flex-1 flex justify-between sm:hidden">
         <a
-          href={anchor}
+          href={anchor} onClick={() => setPage(-1)}
           className="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
         >
           Previous
         </a>
         <a
-          href="#"
+          href={anchor} onClick={() => setPage(+1)}
           className="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
         >
           Next
@@ -259,8 +277,8 @@ function Pagination({ moviesInfo }) {
           >
             <a
               href={anchor}
-              onClick={() => setCurrentPage(-1)}
-              disabled={currentPage == 1}
+              onClick={() => setPage(-1)}
+              disabled={page === 1}
               className="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
             >
               <span className="sr-only">Previous</span>
@@ -268,20 +286,20 @@ function Pagination({ moviesInfo }) {
             </a>
             {/* Current: "z-10 bg-indigo-50 border-indigo-500 text-indigo-600", Default: "bg-white border-gray-300 text-gray-500 hover:bg-gray-50" */}
             <a
-              href="#"
+              href="!#"
               aria-current="page"
               className="z-10 bg-indigo-50 border-indigo-500 text-indigo-600 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
             >
               {moviesInfo.page}
             </a>
             <a
-              href="#"
+              href="!#"
               className="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
             >
               {moviesInfo.page + 1}
             </a>
             <a
-              href="#"
+              href="!#"
               className="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 hidden md:inline-flex relative items-center px-4 py-2 border text-sm font-medium"
             >
               {moviesInfo.page + 2}
@@ -290,26 +308,26 @@ function Pagination({ moviesInfo }) {
               ...
             </span>
             <a
-              href="#"
+              href="!#"
               className="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 hidden md:inline-flex relative items-center px-4 py-2 border text-sm font-medium"
             >
               {moviesInfo.page + 7}
             </a>
             <a
-              href="#"
+              href="!#"
               className="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
             >
               {moviesInfo.page + 8}
             </a>
             <a
-              href="#"
+              href="!#"
               className="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
             >
               {moviesInfo.page + 9}
             </a>
             <a
-              href={anchor}
-              onClick={() => setCurrentPage(+1)}
+              href="#!"
+              onClick={() => setPage(+1)}
               className="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
             >
               <span className="sr-only">Next</span>
