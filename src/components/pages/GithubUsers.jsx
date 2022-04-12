@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import Titlebar from "../Titlebar";
 
 const usersUrl = "https://api.github.com/users";
@@ -39,16 +39,20 @@ export default function GithubUsers() {
   //   // return cnt;
   // };
 
-  useEffect(() => {
-    getUsers();
-  }, []);
+  // useEffect(() => {
+  //   getUsers();
+  // }, []);
+
+useMemo(()=>{
+  getUsers()
+},[])
 
   // useEffect(() => {
   //   getMe();
   // }, []);
 
   let all = [...users];
-  console.log(all);
+  // console.log(all);
   const list = all /*.slice(0, 1)*/
     .map((user) => {
       const { id, login, avatar_url, html_url } = user;
@@ -95,13 +99,13 @@ export default function GithubUsers() {
 
 function LoadingAnimation() {
   const continer = (
-    <div class="group relative animate-pulse">
-      <div class="w-full min-h-80 bg-gray-500 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none">
+    <div className="group relative animate-pulse">
+      <div className="w-full min-h-80 bg-gray-500 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none">
         &nbsp;
       </div>
-      <div class="mt-4 flex justify-between pb-[20px] mb-[5px] border-b-2 border-dashed border-black-200">
-        <h3 class="text-sm font-large bg-gray-500 w-[100%] h-8 pb-0">&nbsp;</h3>
-        <p class="mt-1 text-sm bg-gray-500"></p>
+      <div className="mt-4 flex justify-between pb-[20px] mb-[5px] border-b-2 border-dashed border-black-200">
+        <h3 className="text-sm font-large bg-gray-500 w-[100%] h-8 pb-0">&nbsp;</h3>
+        <p className="mt-1 text-sm bg-gray-500"></p>
       </div>
     </div>
   );
