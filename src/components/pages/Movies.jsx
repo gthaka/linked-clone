@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import {} from "react-router-dom";
-import Titlebar from "../Titlebar";
+// import Titlebar from "../Titlebar";
 import MovieHead from "../../config/adv-movies-search.json";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, SelectorIcon } from "@heroicons/react/solid";
