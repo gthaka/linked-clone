@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from "react";
+import { useState, useMemo } from "react";
 import Titlebar from "../Titlebar";
 
 const usersUrl = "https://api.github.com/users";
