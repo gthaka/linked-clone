@@ -44,7 +44,7 @@ export default function GithubUsers() {
   // }, []);
 
 useMemo(()=>{
-  getUsers()
+  return getUsers()
 },[])
 
   // useEffect(() => {
