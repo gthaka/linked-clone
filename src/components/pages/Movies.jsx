@@ -54,15 +54,18 @@ export default function Movies() {
     console.log(id);
     setGId(id);
   };
-  
+
   useEffect(() => {
-    console.log('getGenres')
     getGenres();
   }, []);
-  
+
+  // useEffect(() => {
+  //   getGId();
+  // }, [genres]);
+
   useEffect(() => {
-    getGId();
-  }, [genres]);
+    console.log(`Page Now is ${page}`);
+  }, [page]);
 
   // const getSelected = async () => {
   //   await getGenres();
@@ -71,7 +74,7 @@ export default function Movies() {
 
   const getMovies = async (id) => {
     setIsLoading(true);
-    console.log(`Page No ${page}`)
+    console.log(`Page No ${page}`);
     // console.log({ ...options, with_genres: id, page: 1 });
     const res = await fetch(
       `${movieURL}?with_genres=${id}&page=${page}`,
@@ -85,12 +88,11 @@ export default function Movies() {
     setMovies(data);
   };
 
-  const handleSelected = data => {
+  const handleSelected = (data) => {
     setSelected(data);
     getGId(data.id);
     getMovies(gId);
   };
-
 
   // useEffect(() => {
   //   handleSelected();
@@ -195,9 +197,90 @@ export default function Movies() {
             </div>
           </>
         )}
-      </Listbox>S
+      </Listbox>
       {movies.results && <MovieRoll movies={movies.results} />}
-      {movies.results && <Pagination moviesInfo={movies} setPage={setPage} page={page}/>}
+      {/* {movies.results && <Pagination moviesInfo={movies} setPage={setPage} page={page}/>} */}
+
+      {movies.results && (
+        <>
+          {/* Pagination Function imekataa. Moved Code Up */}
+          <div className="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
+            <div className="flex-1 flex justify-between sm:hidden">
+              <button
+                onClick={() => setPage(-1)}
+                className="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+              >
+                Previous
+              </button>
+              <a
+                href={anchor}
+                onClick={() => setPage(+1)}
+                className="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+              >
+                Next
+              </a>
+            </div>
+            <div className="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
+              <div>
+                <p className="text-sm text-gray-700">
+                  Showing{" "}
+                  <span className="font-medium">{movies.page * 10 - 9}</span> to{" "}
+                  <span className="font-medium">{movies.page * 10}</span> of{" "}
+                  <span className="font-medium">{movies.total_results}</span>{" "}
+                  results
+                </p>
+              </div>
+              <div>
+                <nav
+                  className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px"
+                  aria-label="Pagination"
+                >
+                  <button
+                    onClick={() => setPage(-1)}
+                    disabled={page <= 1}
+                    className="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+                  >
+                    <span className="sr-only">Previous</span>
+                    <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
+                  </button>
+                  {/* Current: "z-10 bg-indigo-50 border-indigo-500 text-indigo-600", Default: "bg-white border-gray-300 text-gray-500 hover:bg-gray-50" */}
+                  <button disabled={page===movies.page}
+                    aria-current="page"
+                    className="z-10 bg-indigo-50 border-indigo-500 text-indigo-600 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
+                  >
+                    {movies.page}
+                  </button>
+                  <button className="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">
+                    {movies.page + 1}
+                  </button>
+                  <button className="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 hidden md:inline-flex relative items-center px-4 py-2 border text-sm font-medium">
+                    {movies.page + 2}
+                  </button>
+                  <span className="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700">
+                    ...
+                  </span>
+                  <button className="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 hidden md:inline-flex relative items-center px-4 py-2 border text-sm font-medium">
+                    {movies.page + 7}
+                  </button>
+                  <button className="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">
+                    {movies.page + 8}
+                  </button>
+                  <button className="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">
+                    {movies.page + 9}
+                  </button>
+                  <button
+                    onClick={() => currPage => page+1}
+                    className="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+                  >
+                    <span className="sr-only">Next</span>
+                    <ChevronRightIcon className="h-5 w-5" aria-hidden="true" />
+                  </button>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
     </>
   );
 }
@@ -248,13 +331,15 @@ function Pagination({ moviesInfo, setPage, page }) {
     <div className="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
       <div className="flex-1 flex justify-between sm:hidden">
         <a
-          href={anchor} onClick={() => setPage(-1)}
+          href={anchor}
+          onClick={() => setPage(-1)}
           className="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
         >
           Previous
         </a>
         <a
-          href={anchor} onClick={() => setPage(+1)}
+          href={anchor}
+          onClick={() => setPage(+1)}
           className="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
         >
           Next
