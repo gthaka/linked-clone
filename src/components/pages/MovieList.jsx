@@ -24,9 +24,13 @@ export default function MovieList() {
 
   const [genres, setGenres] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(false);
-  React.useEffect(() => {
-    getGenres();
-  },[]);
+//   React.useMemo(() => {
+//     getGenres();
+//   },[]);
+
+  const handleSelectedGenre = (data) => {
+      console.log(data.target);
+  };
 
   return (
     <>
@@ -35,9 +39,10 @@ export default function MovieList() {
         id="movGem"
         className="w-auto h-auto mx-20"
         disabled={isLoading}
+        onChange={handleSelectedGenre}
       >
         <option disabled={true} selected>
-          ---Select a Genre --
+          ---Select a Genre ---
         </option>
         {genres.length &&
           genres.map((gen) => (
