@@ -24,16 +24,19 @@ export default function MovieList() {
 
   const [genres, setGenres] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(false);
+  const [movies, setMovies] = React.useState([]);
 //   React.useMemo(() => {
 //     getGenres();
 //   },[]);
 
-  const handleSelectedGenre = (data) => {
-      console.log(data.target);
+  const handleSelectedGenre = (e) => {
+      console.log( e.target.value);
   };
 
   return (
     <>
+    <div className="mx-6">
+        <section>
       <select
         name="movieGenres"
         id="movGem"
@@ -41,9 +44,9 @@ export default function MovieList() {
         disabled={isLoading}
         onChange={handleSelectedGenre}
       >
-        <option disabled={true} selected>
-          ---Select a Genre ---
-        </option>
+      <option disabled={true} selected>
+        ---Select a Genre ---
+      </option>
         {genres.length &&
           genres.map((gen) => (
             <option key={gen.id} value={gen.id}>
@@ -51,6 +54,15 @@ export default function MovieList() {
             </option>
           ))}
       </select>
+      </section>
+      <section>
+          <div className="bg-indigo-300">
+            {movies.length && movies.map((movie)=>(
+                `${movie.name} <br/>`
+            ))}
+          </div>
+      </section>
+      </div>
     </>
   );
 }
