@@ -25,9 +25,9 @@ export default function MovieList() {
   const [genres, setGenres] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(false);
   const [movies, setMovies] = React.useState([]);
-//   React.useMemo(() => {
-//     getGenres();
-//   },[]);
+  // React.useMemo(() => {
+  //   getGenres();
+  // },[]);
 
   const handleSelectedGenre = (e) => {
       console.log( e.target.value);
