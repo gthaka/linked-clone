@@ -122,13 +122,14 @@ export default function Home() {
               </p>
               <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
                 We also check out some select styles such as
-                <ul class="list-inside">
+              </p>
+              <div className="pl-5 mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+                <ul className="list-inside">
                   <li>Async</li>
                   <li>Array Map</li>
                   <li>React Fragments</li>
                   <li>React Router Dom</li>
-                </ul>
-              </p>
+                </ul></div>
               <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
                 <div className="rounded-md shadow">
                   <NavLink
