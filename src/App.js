@@ -14,20 +14,20 @@ function App() {
   return (
     <div className="min-h-full">
       <Router>
-
-        <Content path={useLocation().pathname} />
+        <Content />
       </Router>
     </div>
   );
 }
 
-function Content({ path }) {
+function Content() {
+  const location = useLocation();
   let base = (
     <Routes>
       <Route path="/" element={<Home />} />
     </Routes>
   );
-  if (path !== "/") {
+  if (location.pathname !== "/") {
     base = (
       <>
         <Navbar />
