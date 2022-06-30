@@ -3,7 +3,7 @@ import "./App.css";
 import React from "react";
 import Home from "./components/pages/Home";
 import Navbar from "./components/Navbar";
-import { BrowserRouter as BRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import GithubUsers from "./components/pages/GithubUsers";
 import DadJokes from "./components/pages/DadJokes";
 // import Movies from "./components/pages/Movies";
@@ -13,10 +13,10 @@ function App() {
   // const location = useLocation();
   return (
     <div className="min-h-full">
-      <BRouter>
-      
+      <Router>
+
         <Content path={useLocation().pathname} />
-      </BRouter>
+      </Router>
     </div>
   );
 }
