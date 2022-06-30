@@ -68,7 +68,7 @@ useMemo(()=>{
           </div>
           <div className="mt-4 flex justify-between pb-[20px] mb-[5px] border-b-2 border-dashed border-black-200">
             <div>
-              <h3 className="text-sm font-large text-red-500 text-gray-700 pb-0">
+              <h3 className="text-sm font-large text-gray-700 pb-0">
                 <a href={html_url} target="_blank" rel="noreferrer">
                   <span aria-hidden="true" className="absolute inset-0" />
                   {login}
