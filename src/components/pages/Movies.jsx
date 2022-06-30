@@ -57,6 +57,7 @@ export default function Movies() {
 
   useEffect(() => {
     getGenres();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // useEffect(() => {
@@ -319,7 +320,7 @@ function MovieRoll({ movies }) {
     </div>
   );
 }
-
+/*
 function Pagination({ moviesInfo, setPage, page }) {
   // const [currentPage, setCurrentPage] = useState(1);
 
@@ -369,7 +370,7 @@ function Pagination({ moviesInfo, setPage, page }) {
               <span className="sr-only">Previous</span>
               <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
             </a>
-            {/* Current: "z-10 bg-indigo-50 border-indigo-500 text-indigo-600", Default: "bg-white border-gray-300 text-gray-500 hover:bg-gray-50" */}
+            {/* Current: "z-10 bg-indigo-50 border-indigo-500 text-indigo-600", Default: "bg-white border-gray-300 text-gray-500 hover:bg-gray-50" * /}
             <a
               href="!#"
               aria-current="page"
@@ -424,3 +425,4 @@ function Pagination({ moviesInfo, setPage, page }) {
     </div>
   );
 }
+*/
