@@ -3,17 +3,20 @@ import "./App.css";
 import React from "react";
 import Home from "./components/pages/Home";
 import Navbar from "./components/Navbar";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter as BRouter,Routes, Route, useLocation } from "react-router-dom";
 import GithubUsers from "./components/pages/GithubUsers";
 import DadJokes from "./components/pages/DadJokes";
 // import Movies from "./components/pages/Movies";
 import Movies from "./components/pages/MovieList";
 function App() {
-  const location = useLocation();
+  
+  // const location = useLocation();
   return (
+  <BRouter>
     <div className="min-h-full">
-      <Content path={location.pathname} />
+      <Content path={useLocation().pathname} />
     </div>
+    </BRouter>
   );
 }
 
