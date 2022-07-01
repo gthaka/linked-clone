@@ -1,6 +1,6 @@
 import React from "react";
 import Titlebar from "../Titlebar";
-import DadConfig from "../../config/dadjokes.json";
+import { dadJokes as DadConfig } from "../../config/rapidApi";
 import { UserIcon } from "@heroicons/react/outline";
 
 export default function DadJokes() {

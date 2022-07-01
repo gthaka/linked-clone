@@ -1,6 +1,6 @@
 // import { getMouseEventOptions } from "@testing-library/user-event/dist/utils";
 import React from "react";
-import MovieHead from "../../config/adv-movies-search.json";
+import {adMovies as MovieHead} from "../../config/rapidApi";
 
 export default function MovieList() {
   const url = "https://advanced-movie-search.p.rapidapi.com/genre/movie/list";
