@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from "react-route
 import GithubUsers from "./components/pages/GithubUsers";
 import DadJokes from "./components/pages/DadJokes";
 // import Movies from "./components/pages/Movies";
-import Movies from "./components/pages/MovieList";
+import Movies from "./components/pages/Movies";
 function App() {
 
   // const location = useLocation();
