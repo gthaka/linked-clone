@@ -2,13 +2,14 @@ import React from "react";
 import { adMovies as MovieHead } from "../../config/rapidApi";
 
 export default function MovieList() {
+
   const url = "https://advanced-movie-search.p.rapidapi.com/genre/movie/list";
   const movieURL = "https://advanced-movie-search.p.rapidapi.com/discover/movie";
   const [genres, setGenres] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(false);
   const [movies, setMovies] = React.useState([]);
   const [genre, setGenre] = React.useState(0);
-  const [page, setPage] = React.useState(0);
+  const [page, setPage] = React.useState(1);
   const [pages, setPages] = React.useState([]);
   const [totalPages, setTotalPages] = React.useState(0);
   const [totalResults, setTotalResults] = React.useState(0);
@@ -35,9 +36,7 @@ export default function MovieList() {
       headers: MovieHead,
     };
     const gen = await fetch(`${movieURL}?with_genres=${genre}&page=${page}`, options);
-    if (!gen.ok) {
-      throw Error("Failed");
-    }
+    if (!gen.ok) { throw Error("Failed"); }
     const res = await gen.json();
     setMovies(res.results);
     setTotalPages(res.total_pages)
@@ -46,8 +45,9 @@ export default function MovieList() {
   };
 
   const handleSelectedGenre = (e) => {
+    setPage(1);
     setGenre(e.target.value);
-    return [];
+    // return [];
   };
 
   const handleSelectedPage = (e) => {
@@ -55,19 +55,15 @@ export default function MovieList() {
     // console.log(page)
   };
 
-  React.useEffect(() => {
-    getGenres();
-  }, []);
+  React.useEffect(() => { getGenres(); }, []);
 
   // Fetch Movies Based on Selected Genre
-  React.useEffect(() => {
-    // console.log(page + '<<<<')
-    genre !== 0 && getMovies();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [genre, page]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  React.useEffect(() => { genre !== 0 && getMovies(); }, [genre, page]);
 
   React.useMemo(() => {
-    const range = [...Array(totalPages - 0 + 1).keys()].map(x => x + 0);
+    const range = totalPages === 0 ? [] : [...Array(totalPages - 0 + 1).keys()].map(x => x + 0);
+    range.length && range.shift();
     // console.log(range);
     setPages(range);
   }, [totalPages])
@@ -101,7 +97,7 @@ export default function MovieList() {
             name="moviePages"
             id="movPg"
             className="w-auto h-auto mx-20"
-            disabled={isLoading} defaultValue={1}
+            disabled={isLoading}
             onChange={handleSelectedPage}
           >
             {pages.length &&
