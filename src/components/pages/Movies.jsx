@@ -1,6 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { } from "react-router-dom";
-// import Titlebar from "../Titlebar";
 import { adMovies as MovieHead } from "../../config/rapidApi";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, SelectorIcon } from "@heroicons/react/solid";
@@ -16,12 +15,6 @@ import {
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
-
-// const anchor = (e) => {
-//   // console.log(e)
-//   // e.preventDefault();
-//   return '#!';
-// };
 
 export default function Movies() {
   const url = "https://advanced-movie-search.p.rapidapi.com/genre/movie/list";
@@ -52,7 +45,6 @@ export default function Movies() {
   };
 
   const getGId = async (id) => {
-    // console.log(id);
     setPage(1);
     setGId(id);
   };
@@ -235,14 +227,8 @@ function MovieRoll({ movies }) {
 }
 
 function Pagination({ moviesInfo, setPage, page }) {
-  // const [currentPage, setCurrentPage] = useState(1);
-
-  // useEffect(()=>{
-  //   setPage(currentPage)
-  // },[currentPage])
 
   return (
-
     <div className="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
       <div className="flex-1 flex justify-between sm:hidden">
         <button disabled={page <= 1}
@@ -281,7 +267,6 @@ function Pagination({ moviesInfo, setPage, page }) {
               <span className="sr-only">Previous</span>
               <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
             </button>
-            {/* Current: "z-10 bg-indigo-50 border-indigo-500 text-indigo-600", Default: "bg-white border-gray-300 text-gray-500 hover:bg-gray-50" */}
             <button disabled={page === moviesInfo.page}
               onClick={() => setPage(page + 1)}
               aria-current="page"
