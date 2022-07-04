@@ -5,9 +5,7 @@ import App from "./App";
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* <BRouter> */}
-      <App />
-    {/* </BRouter> */}
+    <App />
   </React.StrictMode>,
   document.getElementById("root")
 );

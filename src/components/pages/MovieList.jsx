@@ -1,12 +1,18 @@
-// import { getMouseEventOptions } from "@testing-library/user-event/dist/utils";
 import React from "react";
-import {adMovies as MovieHead} from "../../config/rapidApi";
+import { adMovies as MovieHead } from "../../config/rapidApi";
 
 export default function MovieList() {
+
   const url = "https://advanced-movie-search.p.rapidapi.com/genre/movie/list";
-  const movieURL =
-    "https://advanced-movie-search.p.rapidapi.com/discover/movie";
-  
+  const movieURL = "https://advanced-movie-search.p.rapidapi.com/discover/movie";
+  const [genres, setGenres] = React.useState([]);
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [movies, setMovies] = React.useState([]);
+  const [genre, setGenre] = React.useState(0);
+  const [page, setPage] = React.useState(1);
+  const [pages, setPages] = React.useState([]);
+  const [totalPages, setTotalPages] = React.useState(0);
+  const [totalResults, setTotalResults] = React.useState(0);
 
   const getGenres = async () => {
     setIsLoading(true);
@@ -28,73 +34,39 @@ export default function MovieList() {
     const options = {
       method: "GET",
       headers: MovieHead,
-      // params: {with_genres: genre, page: '1'},
     };
-    const gen = await fetch(`${movieURL}?with_genres=${genre}&page=${page===0?1:page}`, options);
-    if (!gen.ok) {
-      throw Error("Failed");
-    }
+    const gen = await fetch(`${movieURL}?with_genres=${genre}&page=${page}`, options);
+    if (!gen.ok) { throw Error("Failed"); }
     const res = await gen.json();
     setMovies(res.results);
     setTotalPages(res.total_pages)
     setTotalResults(res.total_results);
-    console.log(res.total_results)
     setIsLoading(false);
   };
 
-  const [genres, setGenres] = React.useState([]);
-  const [isLoading, setIsLoading] = React.useState(false);
-  const [movies, setMovies] = React.useState([]);
-  const [genre, setGenre] = React.useState(0);
-  const [page, setPage] = React.useState(0);
-  const [pages, setPages] = React.useState([]);
-  const [totalPages, setTotalPages] = React.useState(0);
-  const [totalResults, setTotalResults] = React.useState(0);
+  const handleSelectedGenre = (e) => {
+    setPage(1);
+    setGenre(e.target.value);
+    // return [];
+  };
 
-  React.useEffect(() => {
-    getGenres();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const handleSelectedPage = (e) => {
+    setPage(e.target.value);
+    // console.log(page)
+  };
 
-  // Fetch Movies Based on Selected Genre
-  React.useEffect(() => {
-    console.log(page+'<<<<')
-    genre!== 0 && getMovies();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [genre,page]);
+  React.useEffect(() => { getGenres(); }, []);
 
   // Fetch Movies Based on Selected Genre
-  // React.useEffect(() => {
-  //   movies.length && setTotalPages(movies.total_pages);
-  //   movies.length && setTotalResults(movies.total_results);
-  //   // return [];
-  // // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [movies]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  React.useEffect(() => { genre !== 0 && getMovies(); }, [genre, page]);
 
-  React.useMemo(()=>{
-    const range = [...Array(totalPages - 0 + 1).keys()].map(x => x + 0);
+  React.useMemo(() => {
+    const range = totalPages === 0 ? [] : [...Array(totalPages - 0 + 1).keys()].map(x => x + 0);
+    range.length && range.shift();
     // console.log(range);
     setPages(range);
-  },[totalPages])
-  // React.useEffect(() => {
-  //   // console.log(totalPages)
-    
-  //   // setPages(range);
-  //   // return [];
-  // // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [genre]);
-  
-  const handleSelectedGenre = (e) => {
-    // console.log(e.target.value);
-    setGenre(e.target.value);
-    return [];
-  };
-  
-  const handleSelectedPage = (e) => {
-    // console.log(e.target.value);
-    setPage(e.target.value);
-    console.log(page)
-  };
+  }, [totalPages])
 
   return (
     <>
@@ -125,7 +97,7 @@ export default function MovieList() {
             name="moviePages"
             id="movPg"
             className="w-auto h-auto mx-20"
-            disabled={isLoading} defaultValue={1}
+            disabled={isLoading}
             onChange={handleSelectedPage}
           >
             {pages.length &&
@@ -139,10 +111,10 @@ export default function MovieList() {
         <section>
           <div className="text-3xl">
             <ul>
-            {movies.length && movies.map((movie) => (
-              // `${JSON.stringify(movie)} <br/>`
-              <li key={movie.id}>{movie.title}</li>
-            ))}
+              {movies.length && movies.map((movie) => (
+                // `${JSON.stringify(movie)} <br/>`
+                <li key={movie.id}>{movie.title}</li>
+              ))}
             </ul>
           </div>
         </section>
