@@ -7,7 +7,7 @@ import {
   ChevronLeftIcon,
   ChevronRightIcon,
   EyeIcon,
-  EyeOffIcon,
+  EyeSlashIcon,
   StarIcon,
   VideoCameraIcon,
 } from "@heroicons/react/24/outline";
@@ -138,7 +138,7 @@ export default function Movies() {
                             <>
                               <div className="flex items-center">
                                 {selected ? (
-                                  <EyeOffIcon
+                                  <EyeSlashIcon
                                     as="img"
                                     className="flex-shrink-0 h-6 w-6 rounded-full"
                                   />
