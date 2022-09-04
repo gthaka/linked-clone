@@ -2,15 +2,15 @@ import React, { Fragment, useEffect, useState } from "react";
 import { } from "react-router-dom";
 import { adMovies as MovieHead } from "../../config/rapidApi";
 import { Listbox, Transition } from "@headlessui/react";
-import { CheckIcon, SelectorIcon } from "@heroicons/react/solid";
+import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/24/solid";
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
   EyeIcon,
-  EyeOffIcon,
+  EyeSlashIcon,
   StarIcon,
   VideoCameraIcon,
-} from "@heroicons/react/outline";
+} from "@heroicons/react/24/outline";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -108,7 +108,7 @@ export default function Movies() {
                       </span>
                     </span>
                     <span className="ml-3 absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-                      <SelectorIcon
+                      <ChevronUpDownIcon
                         className="h-5 w-5 text-gray-400"
                         aria-hidden="true"
                       />
@@ -138,7 +138,7 @@ export default function Movies() {
                             <>
                               <div className="flex items-center">
                                 {selected ? (
-                                  <EyeOffIcon
+                                  <EyeSlashIcon
                                     as="img"
                                     className="flex-shrink-0 h-6 w-6 rounded-full"
                                   />
