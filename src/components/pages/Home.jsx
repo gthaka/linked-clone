@@ -1,7 +1,7 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
-import { CodeIcon, MenuIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { ChevronUpDownIcon, MenuIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { main } from "../../config/navigation";
 import { NavLink } from "react-router-dom";
 
@@ -30,7 +30,7 @@ export default function Home() {
                   <div className="flex items-center justify-between w-full md:w-auto">
                     <NavLink to="\">
                       <span className="sr-only">Workflow</span>
-                      <CodeIcon
+                      <ChevronUpDownIcon
                         as="img"
                         className="h-8 w-auto sm:h-10 text-indigo-500"
                         fill="currentColor"
