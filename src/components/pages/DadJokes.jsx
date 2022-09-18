@@ -1,7 +1,7 @@
 import React from "react";
 import Titlebar from "../Titlebar";
 import { dadJokes as DadConfig } from "../../config/rapidApi";
-import { UserIcon } from "@heroicons/react/outline";
+import { UserIcon } from "@heroicons/react/24/outline";
 
 export default function DadJokes() {
   const jokesURL = "https://dad-jokes.p.rapidapi.com/random/joke";
