@@ -31,7 +31,7 @@ export default function Home() {
                       <span className="sr-only">Workflow</span>
                       <CodeBracketIcon
                         as="img"
-                        className="h-8 w-auto sm:h-10 text-indigo-500"
+                        className="h-8 w-auto sm:h-10 text-indigo-500 animate-spin"
                         fill="currentColor"
                       />
                     </NavLink>
