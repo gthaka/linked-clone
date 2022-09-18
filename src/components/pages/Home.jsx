@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
-import { ChevronUpDownIcon, Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { CodeBracketIcon, Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { main } from "../../config/navigation";
 import { NavLink } from "react-router-dom";
 
