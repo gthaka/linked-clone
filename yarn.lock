@@ -1207,10 +1207,10 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
-"@headlessui/react@^1.7.0":
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/@headlessui/react/-/react-1.7.0.tgz#7e36e6bbc25a24b02011527ae157a000dda88b85"
-  integrity sha512-/nDsijOXRwXVLpUBEiYuWguIBSIN3ZbKyah+KPUiD8bdIKtX1U/k+qLYUEr7NCQnSF2e4w1dr8me42ECuG3cvw==
+"@headlessui/react@^1.7.2":
+  version "1.7.2"
+  resolved "https://registry.yarnpkg.com/@headlessui/react/-/react-1.7.2.tgz#e6a6a8d38342064a53182f1eb2bf6d9c1e53ba6a"
+  integrity sha512-snLv2lxwsf2HNTOBNgHYdvoYZ3ChJE8QszPi1d/hl9js8KrFrUulTaQBfSyPbJP5BybVreWh9DxCgz9S0Z6hKQ==
 
 "@heroicons/react@^2.0.11":
   version "2.0.11"
@@ -1581,6 +1581,11 @@
     loader-utils "^2.0.0"
     schema-utils "^3.0.0"
     source-map "^0.7.3"
+
+"@remix-run/router@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@remix-run/router/-/router-1.0.0.tgz#a2189335a5f6428aa904ccc291988567018b6e01"
+  integrity sha512-SCR1cxRSMNKjaVYptCzBApPDqGwa3FGdjVHc+rOToocNPHQdIYLZBfv/3f+KvYuXDkUGVIW9IAzmPNZDRL1I4A==
 
 "@rollup/plugin-babel@^5.2.0":
   version "5.3.1"
@@ -4715,10 +4720,10 @@ headlessui@0.0.0:
   resolved "https://registry.yarnpkg.com/headlessui/-/headlessui-0.0.0.tgz#bffbc91c40e9a6fa09c1e6064caaa670cabc68c0"
   integrity sha512-CHvacVPbl8AqIg2sBNKySUmumu7o15jSrCaTrIh9GW2Eq4y/krCN/vZFOsKCwlrhWQbO4267a8xvvP8bs+qREQ==
 
-heroicons@^2.0.10:
-  version "2.0.10"
-  resolved "https://registry.yarnpkg.com/heroicons/-/heroicons-2.0.10.tgz#ab421e0190cfc4fcf642a116b80b9a2ee55f149f"
-  integrity sha512-4f2UYy2cf2oHswZzdH2frENVk89RV/RLoNnDL577ulV1xsdTWBkM39Gzo2e9AXgTWJ3H95ol/Qs9JBSSU+APBg==
+heroicons@^2.0.11:
+  version "2.0.11"
+  resolved "https://registry.yarnpkg.com/heroicons/-/heroicons-2.0.11.tgz#d733063f57c5f523d730306379859eebdf68eaee"
+  integrity sha512-pjp6xFVNuc7So67RcHD0krrjkvxiUfNh1/48Pvi4SKVeT2qRlunWnKmqCpGpKGpvFl2rQSmkdHFXLVvgR145dg==
 
 history@^5.2.0:
   version "5.3.0"
@@ -7370,12 +7375,19 @@ react-router-dom@^6.2.2:
     history "^5.2.0"
     react-router "6.3.0"
 
-react-router@6.3.0, react-router@^6.3.0:
+react-router@6.3.0:
   version "6.3.0"
   resolved "https://registry.yarnpkg.com/react-router/-/react-router-6.3.0.tgz#3970cc64b4cb4eae0c1ea5203a80334fdd175557"
   integrity sha512-7Wh1DzVQ+tlFjkeo+ujvjSqSJmkt1+8JO+T5xklPlgrh70y7ogx75ODRW0ThWhY7S+6yEDks8TYrtQe/aoboBQ==
   dependencies:
     history "^5.2.0"
+
+react-router@^6.4.0:
+  version "6.4.0"
+  resolved "https://registry.yarnpkg.com/react-router/-/react-router-6.4.0.tgz#68449c23dc893fc7a57db068c19987be1de72edb"
+  integrity sha512-B+5bEXFlgR1XUdHYR6P94g299SjrfCBMmEDJNcFbpAyRH1j1748yt9NdDhW3++nw1lk3zQJ6aOO66zUx3KlTZg==
+  dependencies:
+    "@remix-run/router" "1.0.0"
 
 react-scripts@^5.0.1:
   version "5.0.1"
@@ -8646,10 +8658,10 @@ wbuf@^1.1.0, wbuf@^1.7.3:
   dependencies:
     minimalistic-assert "^1.0.0"
 
-web-vitals@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/web-vitals/-/web-vitals-3.0.1.tgz#7129668af2d1598ff4a574535a46b1432af337c8"
-  integrity sha512-n8LgBynM5BU4C8ZMiTWPu6zbv31AfPnuNXEjWClvPWD5g8h2WkcecR0EtAiQaiMcj1iG0LADyHndR+MKYu5Zog==
+web-vitals@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/web-vitals/-/web-vitals-3.0.2.tgz#a484109dc5d64bc4924f174267ce20e7cd4c7934"
+  integrity sha512-YygzeCdGpNrCHIjW14AI4SxMX2IcONhDvwhHc9KswCIixfSeVl08WdKDfzZaypq2ynRIG3lzGO3CO5dXYzc9+w==
 
 webidl-conversions@^4.0.2:
   version "4.0.2"
