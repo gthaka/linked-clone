@@ -4721,10 +4721,10 @@ headlessui@0.0.0:
   resolved "https://registry.yarnpkg.com/headlessui/-/headlessui-0.0.0.tgz#bffbc91c40e9a6fa09c1e6064caaa670cabc68c0"
   integrity sha512-CHvacVPbl8AqIg2sBNKySUmumu7o15jSrCaTrIh9GW2Eq4y/krCN/vZFOsKCwlrhWQbO4267a8xvvP8bs+qREQ==
 
-heroicons@^2.0.11:
-  version "2.0.11"
-  resolved "https://registry.yarnpkg.com/heroicons/-/heroicons-2.0.11.tgz#d733063f57c5f523d730306379859eebdf68eaee"
-  integrity sha512-pjp6xFVNuc7So67RcHD0krrjkvxiUfNh1/48Pvi4SKVeT2qRlunWnKmqCpGpKGpvFl2rQSmkdHFXLVvgR145dg==
+heroicons@^2.0.12:
+  version "2.0.12"
+  resolved "https://registry.yarnpkg.com/heroicons/-/heroicons-2.0.12.tgz#3ce368870a0ba8276a02e266df2fc5f239a7e6ea"
+  integrity sha512-fqK3k5a1F5eUf74cebh2Ng82lCskDwMbMno9f/BCyZQjSJ8bXKl7jK3507pOSIvB2QrZjF9SD0YQzkKUx1iiNw==
 
 hoopy@^0.1.4:
   version "0.1.4"
