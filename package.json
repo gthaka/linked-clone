@@ -44,7 +44,7 @@
   },
   "devDependencies": {
     "@tailwindcss/aspect-ratio": "^0.4.0",
-    "autoprefixer": "^10.4.12",
+    "autoprefixer": "^10.4.13",
     "dotenv": "^16.0.3",
     "postcss": "^8.4.18",
     "react-router": "^6.4.2",
